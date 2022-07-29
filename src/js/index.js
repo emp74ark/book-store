@@ -1,2 +1,5 @@
-import '../scss/style.scss'
-console.log('test')
+import '../scss/style.scss';
+
+import { buildPage } from './layout';
+
+buildPage();
