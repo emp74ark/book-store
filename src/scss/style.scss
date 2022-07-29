@@ -1,3 +1,5 @@
-body {
-  background: black;
-}
+@import '../scss/header';
+@import './nav';
+@import './main';
+@import './book';
+@import './footer';

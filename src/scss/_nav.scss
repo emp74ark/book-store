@@ -1,0 +1,31 @@
+nav {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px dotted #b8906f;
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.nav__search {
+  display: flex;
+  align-items: center;
+  label {
+    font-size: 1.3rem;
+  }
+  input {
+    border-radius: 1rem;
+    margin: 1rem 0.2rem;
+    padding: 0.2rem 0.5rem;
+    background: #f0f0f0;
+    &:hover {
+      background: #ffffff;
+    }
+  }
+}
+.basket {
+  cursor: pointer;
+}

@@ -1,0 +1,40 @@
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 1rem;
+  border: 0.1rem dotted #b8906f;
+  border-radius: 1rem;
+  &:hover {
+    background: #ffffff;
+    cursor: pointer;
+  }
+}
+.book__image {
+  img {
+    max-width: 160px;
+    max-height: 300px;
+    border-radius: 0.5rem;
+  }
+}
+.book__title {
+  font-size: 1.3rem;
+  padding: 0.3rem 0.5rem;
+}
+.book__author {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+.book__buy {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 0.1rem solid #7c7575;
+  margin: 0.3rem;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: #aa9b8e;
+  }
+}

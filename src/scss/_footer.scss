@@ -1,0 +1,22 @@
+footer {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #b8906f;
+  border-radius: 0rem 0rem 2.5rem 2.5rem;
+  padding: 1rem;
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+.school,
+.git {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 1rem;
+}
