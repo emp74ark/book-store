@@ -1,3 +1,5 @@
+import { shadow } from "./shadow";
+
 function bookInfo(book){
   const main = document.querySelector('main');
   const modal = document.createElement('div');
@@ -7,6 +9,7 @@ function bookInfo(book){
   modalClose.innerHTML = '&times;'
   modalClose.addEventListener('click', () => {
     main.removeChild(modal);
+    shadow(0);
   })
   const bookImage = document.createElement('img');
   bookImage.src = book['imageLink'];
@@ -34,7 +37,7 @@ function bookInfo(book){
   bookLink.className = 'modal__window-link';
   bookLink.innerHTML = `<a href='${book['link']}' target='_blank'>Wikipedia</a>`;
   const bookBuy = document.createElement('div');
-  bookBuy.className = 'book__buy';
+  bookBuy.className = 'modal__window-buy';
   bookBuy.textContent = 'Add to cart';
   bookBuy.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -55,6 +58,7 @@ function bookInfo(book){
   modal.appendChild(modalInfo);
 
   main.appendChild(modal);
+  shadow(1);
 }
 
 export { bookInfo }

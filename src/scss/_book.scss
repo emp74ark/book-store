@@ -3,6 +3,7 @@
   width: 200px;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   background: #f0f0f0;
   padding: 1rem;
   border: 0.1rem dotted #b8906f;
@@ -20,10 +21,12 @@
 .book__title {
   font-size: 1.3rem;
   padding: 0.3rem 0.5rem;
+  text-align: center;
 }
 .book__author {
   font-size: 1.1rem;
   font-style: italic;
+  text-align: center;
 }
 .book__buy {
   font-size: 1.1rem;

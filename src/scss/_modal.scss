@@ -3,31 +3,27 @@
   left: calc(50% - 20rem);
   top: calc(50% - 10rem);
   width: 40rem;
-  min-height: 20rem;
   background: #ffffff;
   border-radius: 2rem;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  z-index: 10;
   img {
-    max-width: 45%;
+    width: 20rem;
     border-radius: 1rem;
   }
 }
 .modal__window-close {
   position: absolute;
   top: 1rem;
-  right: 1rem;
-  font-size: 1.6rem;
-  width: 2rem;
-  height: 2rem;
-  border: 0.1rem solid #000000;
-  border-radius: 50%;
-  text-align: center;
+  right: 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
   cursor: pointer;
 }
 .modal__window-info {
-  max-width: 45%;
+  width: 50%;
   margin: 2rem 1rem;
   font-size: 1.2rem;
   font-style: italic;
@@ -68,5 +64,20 @@
 .modal__window-link {
   &::before {
     content: 'Additional info: ';
+  }
+}
+.modal__window-buy {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 0.1rem solid #7c7575;
+  margin: 0.3rem;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: #aa9b8e;
   }
 }
