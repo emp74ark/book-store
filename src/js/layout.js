@@ -1,4 +1,5 @@
 import { getData } from './sources';
+import { bookInfo } from './modal';
 
 const page = document.body;
 
@@ -35,6 +36,7 @@ function createPage(){
 function createElement(book) {
   const bookWrapper = document.createElement('div');
   bookWrapper.className = 'book'
+  bookWrapper.dataset['id'] = book['id'];
   const bookImage = document.createElement('img');
   bookImage.className = 'book__image'
   bookImage.src = book['imageLink'];
@@ -44,23 +46,25 @@ function createElement(book) {
   const bookAuthor = document.createElement('span');
   bookAuthor.className = 'book__author'
   bookAuthor.textContent = book['author'];
-  const bookInfo = document.createElement('div');
-  bookInfo.className = 'book__info'
-  bookInfo.textContent = '?'
-  bookInfo.addEventListener('click', () => {
+  // const bookInfo = document.createElement('div');
+  // bookInfo.className = 'book__info'
+  // bookInfo.textContent = '?'
+  bookWrapper.addEventListener('click', () => {
     console.log('book info modal window')
+    bookInfo(book);
   })
   const bookBuy = document.createElement('div');
   bookBuy.className = 'book__buy';
   bookBuy.textContent = 'Add to cart';
-  bookBuy.addEventListener('click', () => {
-    console.log('add to basket')
+  bookBuy.addEventListener('click', (e) => {
+    e.stopPropagation();
+    console.log(`add to basket ${book['id']}`)
   })
   
   bookWrapper.appendChild(bookImage);
   bookWrapper.appendChild(bookTitle);
   bookWrapper.appendChild(bookAuthor);
-  bookWrapper.appendChild(bookInfo);
+  // bookWrapper.appendChild(bookInfo);
   bookWrapper.appendChild(bookBuy);
 
   const main = document.querySelector('main');

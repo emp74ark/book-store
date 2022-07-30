@@ -1,0 +1,72 @@
+.modal__window {
+  position: fixed;
+  left: calc(50% - 20rem);
+  top: calc(50% - 10rem);
+  width: 40rem;
+  min-height: 20rem;
+  background: #ffffff;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  img {
+    max-width: 45%;
+    border-radius: 1rem;
+  }
+}
+.modal__window-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0.1rem solid #000000;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+.modal__window-info {
+  max-width: 45%;
+  margin: 2rem 1rem;
+  font-size: 1.2rem;
+  font-style: italic;
+  list-style: none;
+  li {
+    margin: 1rem;
+  }
+}
+.modal__window__title {
+  font-size: 1.5rem;
+  margin: 0.5rem 0rem;
+}
+.modal__window__author {
+  &::before {
+    content: 'Author: ';
+  }
+}
+.modal__window-country {
+  &::before {
+    content: 'Country: ';
+  }
+}
+.modal__window-language {
+  &::before {
+    content: 'Language: ';
+  }
+}
+.modal__window-year {
+  &::before {
+    content: 'Year: ';
+  }
+}
+.modal__window-pages {
+  &::before {
+    content: 'Pages: ';
+  }
+}
+.modal__window-link {
+  &::before {
+    content: 'Additional info: ';
+  }
+}
