@@ -7,13 +7,14 @@ const page = document.body;
 function createPage(){
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.textContent = 'Book store: top 100'
+  title.textContent = 'Book store'
   header.appendChild(title);
   
   const nav = document.createElement('nav');
-  const searchWrapper = document.createElement('div');
-  searchWrapper.className = 'nav__search';
-  searchWrapper.innerHTML = '<label for="search">Search:</label> <input type="search" name="search" id="search" autofocus autocomplete="off">';
+  const home = document.createElement('a');
+  home.href = '#'
+  home.innerHTML = '<img src="../assets/icons/home.png" alt="home">'
+  
   const basket = document.createElement('div');
   basket.className = 'basket';
   basket.innerHTML = '<img src="../assets/icons/basket.png" alt="shopping cart">';
@@ -23,7 +24,7 @@ function createPage(){
   const basketCounter = document.createElement('span');
   basketCounter.className = 'basket__counter';
   basket.appendChild(basketCounter);
-  nav.appendChild(searchWrapper);
+  nav.appendChild(home);
   nav.appendChild(basket);
   
   const main = document.createElement('main');
@@ -72,6 +73,7 @@ function createElement(book) {
 }
 
 async function buildPage(){
+  document.body.innerHTML = ''
   createPage();
   const booksData = await getData();
   booksData.forEach((el) => {

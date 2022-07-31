@@ -1,4 +1,5 @@
-import { basketContainer } from "./basket";
+import { basketContainer } from './basket';
+import { buildPage } from './layout'
 
 const orders = [];
 
@@ -7,8 +8,17 @@ function checkoutPage(){
 
   const header = document.createElement('header');
   const title = document.createElement('h1');
-  title.innerHTML = '<a href="index.html">Book store: checkout</a>';
+  title.innerHTML = 'Book store</a>';
   header.appendChild(title);
+
+  const nav = document.createElement('nav');
+  const home = document.createElement('img');
+  home.src = '../assets/icons/home.png'
+  home.alt = 'Back to start page'
+  home.addEventListener('click', () => {
+    buildPage()
+  })
+  nav.appendChild(home);
 
   const main = document.createElement('main');
 
@@ -116,6 +126,7 @@ function checkoutPage(){
   footer.innerHTML = '<a href="#" target="_blank" class="school"> <img src="../assets/icons/school.png" alt="UpSkill Me"> <span>UpSkill Me</span> </a> <a href="https://github.com/emp74ark" target="_blank" class="git"> <img src="../assets/icons/github.png" alt="Github"> <span>emp74ark</span> </a>'
   
   page.appendChild(header);
+  page.appendChild(nav);
   page.appendChild(main);
   page.appendChild(footer);
 }

@@ -1,11 +1,13 @@
 const basketContainer = {};
 
 class Basket {
+  static totalAmount = 0;
+  static idList = new Set;
+  
   constructor (book, amount = 1){
     this.book = book,
     this.amount = amount
   }
-  static totalAmount = 0;
   amountUp(n){
     this.amount += n;
     Basket.totalAmount += n;
@@ -14,26 +16,31 @@ class Basket {
     this.amount -= n;
     Basket.totalAmount -= n;
   }
-  static getAmount(){
+  static getTotalAmount(){
     return Basket.totalAmount;
+  }
+  static setTotalAmount(n){
+    Basket.totalAmount += n;
   }
 }
 
 function basketAdd(book, n=1){
   const basketCounter = document.querySelector('.basket__counter');
   const basketSize = Object.keys(basketContainer).length;
-  if (basketSize === 0){
-    basketContainer[basketSize] = new Basket(book, n)
+  if (!Basket.idList.has(book['id'])){
+    basketContainer[basketSize] = new Basket(book, n);
+    Basket.setTotalAmount(n);
+    Basket.idList.add(book['id'])
   }
-  for (let b = 0; b < basketSize; b++){
-    if (basketContainer[b]['book']['id'] === book['id']){
-      basketContainer[b].amountUp(n)
-    }
-    if (basketContainer[b]['book']['id'] !== book['id']){
-      basketContainer[basketSize] = new Basket(book, n)
+  if (Basket.idList.has(book['id'])){
+    for (let i = 0; i < basketSize; i++){
+      if (basketContainer[i]['book']['id'] === book['id']){
+        basketContainer[i].amountUp(n);
+      }
     }
   }
-  basketCounter.textContent = `${Basket.getAmount() + 1}`
+  basketCounter.textContent = `${Basket.getTotalAmount()}`
+  console.log(basketContainer)
 }
 
 export { basketAdd, basketContainer }
