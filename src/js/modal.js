@@ -1,4 +1,5 @@
 import { basketAdd, basketContainer } from "./basket";
+import { buildCheckout } from "./cahekout";
 import { shadow } from "./shadow";
 
 function bookInfo(book){
@@ -87,7 +88,7 @@ function basketInfo(){
     basketCheckout.className = 'basket__wrapper-checkout';
     basketCheckout.textContent = 'Edit or checkout'
     basketCheckout.addEventListener('click', () => {
-      console.log('checkout page')
+      buildCheckout()
     })
     basketWrapper.appendChild(basketCheckout);
     main.appendChild(basketWrapper);
