@@ -81,3 +81,29 @@
     background: #aa9b8e;
   }
 }
+.basket__wrapper {
+  position: absolute;
+  left: -26rem;
+  top: 2rem;
+  width: 25rem;
+  background: #ffffff;
+  font-size: 1.2rem;
+  border: 0.1rem solid #000000;
+  border-radius: 1rem 0rem 1rem 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+.basket__wrapper-checkout {
+  width: max-content;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 0.1rem solid #7c7575;
+  margin: 0.3rem auto;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: #aa9b8e;
+  }
+}

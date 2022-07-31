@@ -1,3 +1,4 @@
+import { basketAdd, basketContainer } from "./basket";
 import { shadow } from "./shadow";
 
 function bookInfo(book){
@@ -41,7 +42,7 @@ function bookInfo(book){
   bookBuy.textContent = 'Add to cart';
   bookBuy.addEventListener('click', (e) => {
     e.stopPropagation();
-    console.log(`add to basket ${book['id']}`)
+    basketAdd(book)
   })
 
   modalInfo.appendChild(bookTitle);
@@ -61,4 +62,38 @@ function bookInfo(book){
   shadow(1);
 }
 
-export { bookInfo }
+function basketInfo(){
+  const main = document.querySelector('.basket');
+  const basketWrapper = document.querySelector('.basket__wrapper');
+  if (basketWrapper === null){
+    const basketWrapper = document.createElement('div');
+    basketWrapper.className = 'basket__wrapper';
+    const basketSize = Object.keys(basketContainer).length
+    if (basketSize > 0){
+      const basketList = document.createElement('ol');
+      basketList.className = 'basket__wrapper-list';
+      for (let b = 0; b < basketSize; b++){
+        const basketItem = document.createElement('li');
+        basketItem.className = 'basket__wrapper-item';
+        basketItem.textContent = `${basketContainer[b]['book']['title']} - ${basketContainer[b]['book']['author']}: ${basketContainer[b]['amount']} pcs`;
+        basketList.appendChild(basketItem);
+      }
+      basketWrapper.appendChild(basketList);
+    }
+    if (basketSize === 0){
+      basketWrapper.textContent = 'Nothing was added';
+    }
+    const basketCheckout = document.createElement('div');
+    basketCheckout.className = 'basket__wrapper-checkout';
+    basketCheckout.textContent = 'Edit or checkout'
+    basketCheckout.addEventListener('click', () => {
+      console.log('checkout page')
+    })
+    basketWrapper.appendChild(basketCheckout);
+    main.appendChild(basketWrapper);
+  } else {
+    main.removeChild(basketWrapper);
+  }
+}
+
+export { bookInfo, basketInfo }

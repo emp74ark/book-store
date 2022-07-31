@@ -6,8 +6,8 @@ nav {
   justify-content: space-between;
   border-bottom: 4px dotted #b8906f;
   img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
 .nav__search {
@@ -28,4 +28,19 @@ nav {
 }
 .basket {
   cursor: pointer;
+  position: relative;
+}
+.basket__counter {
+  // border: 0.1rem solid #000000;
+  // border-radius: 50%;
+  // width: 1.2rem;
+  // height: 1.2rem;
+  position: absolute;
+  left: -0.7rem;
+  top: -0.7rem;
+  opacity: 0.9;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600; 
+  color: #af2f2f;
 }

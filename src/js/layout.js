@@ -1,5 +1,6 @@
 import { getData } from './sources';
-import { bookInfo } from './modal';
+import { bookInfo, basketInfo } from './modal';
+import { basketAdd } from './basket';
 
 const page = document.body;
 
@@ -17,8 +18,11 @@ function createPage(){
   basket.className = 'basket';
   basket.innerHTML = '<img src="../assets/icons/basket.png" alt="shopping cart">';
   basket.addEventListener('click', () => {
-    console.log('basket');
+    basketInfo();
   })
+  const basketCounter = document.createElement('span');
+  basketCounter.className = 'basket__counter';
+  basket.appendChild(basketCounter);
   nav.appendChild(searchWrapper);
   nav.appendChild(basket);
   
@@ -46,9 +50,6 @@ function createElement(book) {
   const bookAuthor = document.createElement('span');
   bookAuthor.className = 'book__author'
   bookAuthor.textContent = book['author'];
-  // const bookInfo = document.createElement('div');
-  // bookInfo.className = 'book__info'
-  // bookInfo.textContent = '?'
   bookWrapper.addEventListener('click', () => {
     console.log('book info modal window')
     bookInfo(book);
@@ -58,13 +59,12 @@ function createElement(book) {
   bookBuy.textContent = 'Add to cart';
   bookBuy.addEventListener('click', (e) => {
     e.stopPropagation();
-    console.log(`add to basket ${book['id']}`)
+    basketAdd(book);
   })
   
   bookWrapper.appendChild(bookImage);
   bookWrapper.appendChild(bookTitle);
   bookWrapper.appendChild(bookAuthor);
-  // bookWrapper.appendChild(bookInfo);
   bookWrapper.appendChild(bookBuy);
 
   const main = document.querySelector('main');
