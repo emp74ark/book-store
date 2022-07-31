@@ -1,5 +1,5 @@
 import { basketAdd, basketContainer } from "./basket";
-import { buildCheckout } from "./cahekout";
+import { buildCheckout } from "./checkout";
 import { shadow } from "./shadow";
 
 function bookInfo(book){
