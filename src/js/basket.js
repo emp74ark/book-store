@@ -40,7 +40,6 @@ function basketAdd(book, n=1){
     }
   }
   basketCounter.textContent = `${Basket.getTotalAmount()}`
-  console.log(basketContainer)
 }
 
 export { basketAdd, basketContainer }

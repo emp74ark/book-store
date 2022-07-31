@@ -31,7 +31,17 @@ function checkoutPage(){
     for (let b = 0; b < checkoutSize; b++){
       const checkoutItem = document.createElement('li');
       checkoutItem.className = 'checkout__wrapper-item';
-      checkoutItem.textContent = `${basketContainer[b]['book']['title']} - ${basketContainer[b]['book']['author']}: ${basketContainer[b]['amount']} pcs`;
+      const itemText = document.createElement('span');
+      itemText.textContent = `${basketContainer[b]['book']['title']} - ${basketContainer[b]['book']['author']}: ${basketContainer[b]['amount']} pcs`;
+      const removeButton = document.createElement('span');
+      removeButton.className = 'checkout__wrapper-remove';
+      removeButton.innerHTML = '&times;'
+      removeButton.addEventListener('click', () => {
+        checkoutList.removeChild(checkoutItem);
+        delete basketContainer[b];
+      })
+      checkoutItem.appendChild(itemText);
+      checkoutItem.appendChild(removeButton);
       checkoutList.appendChild(checkoutItem);
     }
     checkoutWrapper.appendChild(checkoutList);

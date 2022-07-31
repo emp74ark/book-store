@@ -17,10 +17,17 @@
   }
 }
 .wrong-input {
-  border-color: #ff0000 !important;
+  border-color: #b84343 !important;
 }
 .checkout__wrapper-list {
   width: 45%;
+}
+.checkout__wrapper-remove {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  vertical-align: middle;
+  color: #b84343;
 }
 .checkout__wrapper-form {
   display: flex;
