@@ -9,7 +9,6 @@
     font-style: italic;
   }
   input,
-  textarea,
   fieldset,
   select {
     border: 0.1rem solid #7c7575;
@@ -23,9 +22,9 @@
       margin: 0rem 1rem;
     }
   }
-}
-.wrong-input {
-  border: 0.2rem solid #b84343 !important;
+  input:required:invalid  {
+    border: 0.1rem solid #b84343;
+  }
 }
 .checkout__wrapper-list {
   width: 45%;
@@ -59,10 +58,10 @@
   position: fixed;
   width: 30rem;
   height: 4rem;
-  top: 50%;
+  top: 40%;
   left: calc(50% - 15rem);
   font-size: 4rem;
-  color: #b84343;
+  color: #6e2626;
   opacity: 0.8;
   text-align: center;
 }

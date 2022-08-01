@@ -36,22 +36,37 @@
         <span>Add to cart</span>
       </div>
       <form action="" method="post">
-        <label for="buyer-name">Name</label>
-        <input type="text" name="buyer-name" id="buyer-name">
+        <label for="name">Name</label>
+        <input type="text" name="buyer-name" id="buyer-name" required pattern="[A-za-z]{4,}">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" required pattern="[A-Za-z]{5,}">
         <label for="buyer-email">Email</label>
-        <input type="email" name="buyer-email" id="buyer-email">
-        <label for="buyer-address">Address</label>
-        <input type="text" name="buyer-address" id="buyer-address">
-        <input type="submit" value="purchase">
+        <label for="date">Delivery date</label>
+        <input type="datetime-local" name="date" id="date" required>
+        <input type="email" name="email" id="email" required>
+        <label for="street">Street</label>
+        <input type="text" name="street" id="street" required pattern="[A-Za-z]{5,}">
+        <label for="house">House number</label>
+        <input type="number" name="house" id="house" required min="0">
+        <label for="flat">Flat number</label>
+        <input type="text" name="flat" id="flat" required min="0" pattern="([0-9])/?([0-9])">
         <fieldset>
           <legend>Payment method:</legend>
           <label for="card">Card</label>
           <input type="radio" name="payment" id="card" required>
           <label for="cash">Cash</label>
-          <input type="radio" name="payment" id="cash">
+          <input type="radio" name="payment" id="cash" required>
         </fieldset>
-        <input type="datetime" name="" id="date" min="">
-      
+        <label for="gift">Select gift:</label>
+        <select name="gift" required>
+          <option value="">--Please choose an option--</option>
+          <option value="pack">pack as a gift</option>
+          <option value="postcard">postcard</option>
+          <option value="discount">2% discount to the next time</option>
+          <option value="pen">branded pen</option>
+          <option value="pencil">branded pencil</option>
+        </select>
+        <input type="submit" value="Purchase">
       </form>
     </div>
   </main>

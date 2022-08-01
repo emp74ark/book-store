@@ -14,6 +14,9 @@ function createPage(){
   const home = document.createElement('a');
   home.href = '#'
   home.innerHTML = '<img src="../assets/icons/home.png" alt="home">'
+
+  const navTitle = document.createElement('h2');
+  navTitle.innerHTML = '<h2>Top 100</h2>'
   
   const basket = document.createElement('div');
   basket.className = 'basket';
@@ -25,6 +28,7 @@ function createPage(){
   basketCounter.className = 'basket__counter';
   basket.appendChild(basketCounter);
   nav.appendChild(home);
+  nav.appendChild(navTitle);
   nav.appendChild(basket);
   
   const main = document.createElement('main');
