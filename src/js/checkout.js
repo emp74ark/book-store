@@ -104,7 +104,6 @@ function checkoutPage(){
     if (Basket.getTotalAmount() > 0){
       const data = formHandler(checkoutForm);
       sendData(data);
-      console.log(orders);
       buildLast();
     }
     if (Basket.getTotalAmount() === 0){
@@ -135,7 +134,6 @@ function buildCheckout(){
   const tomorrow = new Date(today)
   tomorrow.setDate(tomorrow.getDate() + 1)
   dateTime.min = tomorrow
-  console.log(tomorrow)
 }
 
 export { buildCheckout, orders }
