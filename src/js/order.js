@@ -11,7 +11,7 @@ function lastPage(){
 
   const nav = document.createElement('nav');
   const home = document.createElement('img');
-  home.src = '../assets/icons/home.png'
+  home.src = './assets/icons/home.png'
   home.alt = 'Back to start page'
   home.addEventListener('click', () => {
     buildPage()
@@ -40,7 +40,7 @@ function lastPage(){
   main.appendChild(ordersList);
   
   const footer = document.createElement('footer');
-  footer.innerHTML = '<a href="#" target="_blank" class="school"> <img src="../assets/icons/school.png" alt="UpSkill Me"> <span>UpSkill Me</span> </a> <a href="https://github.com/emp74ark" target="_blank" class="git"> <img src="../assets/icons/github.png" alt="Github"> <span>emp74ark</span> </a>'
+  footer.innerHTML = '<a href="#" target="_blank" class="school"> <img src="./assets/icons/school.png" alt="UpSkill Me"> <span>UpSkill Me</span> </a> <a href="https://github.com/emp74ark" target="_blank" class="git"> <img src="./assets/icons/github.png" alt="Github"> <span>emp74ark</span> </a>'
   
   page.appendChild(header);
   page.appendChild(nav);

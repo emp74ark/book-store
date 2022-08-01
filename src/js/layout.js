@@ -13,14 +13,14 @@ function createPage(){
   const nav = document.createElement('nav');
   const home = document.createElement('a');
   home.href = '#'
-  home.innerHTML = '<img src="../assets/icons/home.png" alt="home">'
+  home.innerHTML = '<img src="./assets/icons/home.png" alt="home">'
 
   const navTitle = document.createElement('h2');
   navTitle.innerHTML = '<h2>Top 100</h2>'
   
   const basket = document.createElement('div');
   basket.className = 'basket';
-  basket.innerHTML = '<img src="../assets/icons/basket.png" alt="shopping cart">';
+  basket.innerHTML = '<img src="./assets/icons/basket.png" alt="shopping cart">';
   basket.addEventListener('click', () => {
     basketInfo();
   })
@@ -34,7 +34,7 @@ function createPage(){
   const main = document.createElement('main');
   
   const footer = document.createElement('footer');
-  footer.innerHTML = '<a href="#" target="_blank" class="school"> <img src="../assets/icons/school.png" alt="UpSkill Me"> <span>UpSkill Me</span> </a> <a href="https://github.com/emp74ark" target="_blank" class="git"> <img src="../assets/icons/github.png" alt="Github"> <span>emp74ark</span> </a>'
+  footer.innerHTML = '<a href="#" target="_blank" class="school"> <img src="./assets/icons/school.png" alt="UpSkill Me"> <span>UpSkill Me</span> </a> <a href="https://github.com/emp74ark" target="_blank" class="git"> <img src="./assets/icons/github.png" alt="Github"> <span>emp74ark</span> </a>'
   
   page.appendChild(header);
   page.appendChild(nav);
