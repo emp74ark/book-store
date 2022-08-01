@@ -9,15 +9,23 @@
     font-style: italic;
   }
   input,
-  textarea {
+  textarea,
+  fieldset,
+  select {
     border: 0.1rem solid #7c7575;
     border-radius: 1rem;
     padding: 0.3rem 1rem;
     margin: 0.2rem 0rem 0.5rem 0rem;
   }
+  fieldset {
+    text-align: center;
+    input {
+      margin: 0rem 1rem;
+    }
+  }
 }
 .wrong-input {
-  border-color: #b84343 !important;
+  border: 0.2rem solid #b84343 !important;
 }
 .checkout__wrapper-list {
   width: 45%;
@@ -46,4 +54,15 @@
   &:hover {
     background: #aa9b8e;
   }
+}
+.checkout__error {
+  position: fixed;
+  width: 30rem;
+  height: 4rem;
+  top: 50%;
+  left: calc(50% - 15rem);
+  font-size: 4rem;
+  color: #b84343;
+  opacity: 0.8;
+  text-align: center;
 }

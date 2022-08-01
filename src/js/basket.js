@@ -19,8 +19,11 @@ class Basket {
   static getTotalAmount(){
     return Basket.totalAmount;
   }
-  static setTotalAmount(n){
+  static upTotalAmount(n){
     Basket.totalAmount += n;
+  }
+  static downTotalAmount(n){
+    Basket.totalAmount -= n;
   }
 }
 
@@ -29,7 +32,7 @@ function basketAdd(book, n=1){
   const basketSize = Object.keys(basketContainer).length;
   if (!Basket.idList.has(book['id'])){
     basketContainer[basketSize] = new Basket(book, n);
-    Basket.setTotalAmount(n);
+    Basket.upTotalAmount(n);
     Basket.idList.add(book['id'])
   }
   if (Basket.idList.has(book['id'])){
@@ -42,4 +45,4 @@ function basketAdd(book, n=1){
   basketCounter.textContent = `${Basket.getTotalAmount()}`
 }
 
-export { basketAdd, basketContainer }
+export { basketAdd, basketContainer, Basket }

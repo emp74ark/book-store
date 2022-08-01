@@ -88,7 +88,7 @@ function basketInfo(){
     basketCheckout.className = 'basket__wrapper-checkout';
     basketCheckout.textContent = 'Edit or checkout'
     basketCheckout.addEventListener('click', () => {
-      buildCheckout()
+      setTimeout(buildCheckout, 100)
     })
     basketWrapper.appendChild(basketCheckout);
     main.appendChild(basketWrapper);
