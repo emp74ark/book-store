@@ -1,4 +1,4 @@
-import { basketAdd, basketContainer } from "./basket";
+import { Basket, basketAdd, basketContainer } from "./basket";
 import { buildCheckout } from "./checkout";
 import { shadow } from "./shadow";
 
@@ -79,7 +79,11 @@ function basketInfo(){
         basketItem.textContent = `${basketContainer[b]['book']['title']} - ${basketContainer[b]['book']['author']}: ${basketContainer[b]['amount']} pcs`;
         basketList.appendChild(basketItem);
       }
+      const basketTotalPrice = document.createElement('span');
+      basketTotalPrice.className = 'basket__total-price';
+      basketTotalPrice.textContent = `Total price: ${Basket.getTotalPrice()} pesso`
       basketWrapper.appendChild(basketList);
+      basketWrapper.appendChild(basketTotalPrice);
     }
     if (basketSize === 0){
       basketWrapper.textContent = 'Nothing was added';

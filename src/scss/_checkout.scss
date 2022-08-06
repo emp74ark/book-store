@@ -7,6 +7,7 @@
   label {
     font-size: 1rem;
     font-style: italic;
+    position: relative;
   }
   input,
   fieldset,
@@ -16,10 +17,21 @@
     padding: 0.3rem 1rem;
     margin: 0.2rem 0rem 0.5rem 0rem;
   }
+  font-size: 1rem;
+  font-style: italic;
   fieldset {
     text-align: center;
     input {
       margin: 0rem 1rem;
+    }
+  }
+  ul {
+    text-align: start;
+  }
+  li {
+    list-style: none;
+    input {
+      margin: 0.2rem 1rem;
     }
   }
   input:required:invalid  {
@@ -54,6 +66,9 @@
     background: #aa9b8e;
   }
 }
+.checkout__total-price {
+  font-weight: 800;
+}
 .checkout__error {
   position: fixed;
   width: 30rem;
@@ -64,4 +79,16 @@
   color: #6e2626;
   opacity: 0.8;
   text-align: center;
+}
+.error__input {
+  background: #ffffff;
+  color: #6e2626;
+  border-radius: 1rem 1rem 1rem 0rem;
+  width: fit-content;
+  padding: 0.1rem 1rem;
+  position: absolute;
+  top: -0.3 rem;
+  right: 0;
+  opacity: 0.8;
+  box-shadow: 0.1rem 0.1rem 00.1rem;
 }

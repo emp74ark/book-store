@@ -28,6 +28,24 @@
   font-style: italic;
   text-align: center;
 }
+.book__price {
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.book__more {
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  padding: 0.2rem 0.6rem;
+  border: 0.1rem dotted #7c7575;
+  border-radius: 1rem;
+  &:hover {
+    background: #f3dfcf;
+  }
+}
+
 .book__buy {
   font-size: 1.1rem;
   font-weight: 600;
@@ -37,6 +55,6 @@
   border-radius: 1rem;
   cursor: pointer;
   &:hover {
-    background: #aa9b8e;
+    background: #f3dfcf;
   }
 }

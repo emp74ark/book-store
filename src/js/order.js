@@ -1,5 +1,6 @@
 import { buildPage } from './layout'
 import { orders } from './checkout';
+// import { basketContainer } from './basket'
 
 function lastPage(){
   const page = document.body;
@@ -27,15 +28,20 @@ function lastPage(){
   ordersList.className = 'orders__list';
   for (let i = orders.length - 1; i >= 0; i--){
     const orderItem = document.createElement('li');
-    orderItem.textContent = orders[i][3][1].replace('T', ' ')
-    for (let j = 0; j < orders[i].length; j++){
+    orderItem.textContent = orders[i][0][3][1]
+    for (let j = 0; j < orders[i][0].length; j++){
       const orderContent = document.createElement('div');
       orderContent.className = 'orders__list-content';
-      orderContent.innerHTML = `<b>${orders[i][j][0]}:</b> ${orders[i][j][1]}`
+      orderContent.innerHTML = `<b>${orders[i][0][j][0]}:</b> ${orders[i][0][j][1]}`
       orderItem.appendChild(orderContent);
     }
+    const orderTotalPrice = document.createElement('div');
+    orderTotalPrice.className = 'orders__list-content';
+    orderTotalPrice.innerHTML = `<b>Total price:</b> ${orders[i][1][1]} pesso`;
+    orderItem.appendChild(orderTotalPrice);
     ordersList.appendChild(orderItem);
   }
+
 
   main.appendChild(ordersList);
   
@@ -51,6 +57,11 @@ function lastPage(){
 function buildLast(){
   document.body.innerHTML = ''
   lastPage();
+  // console.log(basketContainer)
+  /* for (const b in basketContainer){
+    delete basketContainer[`${b}`]
+  } */
+  // console.log(basketContainer)
 }
 
 export { buildLast }

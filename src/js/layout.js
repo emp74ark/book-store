@@ -55,8 +55,13 @@ function createElement(book) {
   const bookAuthor = document.createElement('span');
   bookAuthor.className = 'book__author'
   bookAuthor.textContent = book['author'];
+  const bookPrice = document.createElement('span');
+  bookPrice.className = 'book__price';
+  bookPrice.textContent = `Price: ${book['price']}pesso`;
+  const bookMore = document.createElement('span');
+  bookMore.className = 'book__more';
+  bookMore.textContent = 'Show more...'
   bookWrapper.addEventListener('click', () => {
-    console.log('book info modal window')
     bookInfo(book);
   })
   const bookBuy = document.createElement('div');
@@ -70,19 +75,27 @@ function createElement(book) {
   bookWrapper.appendChild(bookImage);
   bookWrapper.appendChild(bookTitle);
   bookWrapper.appendChild(bookAuthor);
+  bookWrapper.appendChild(bookPrice);
+  bookWrapper.appendChild(bookMore);
   bookWrapper.appendChild(bookBuy);
-
-  const main = document.querySelector('main');
-  main.appendChild(bookWrapper)
+  return bookWrapper
 }
 
-async function buildPage(){
-  document.body.innerHTML = ''
-  createPage();
+async function buildBooksList(){
+  const fragment = new DocumentFragment;
   const booksData = await getData();
   booksData.forEach((el) => {
-    createElement(el);
+    const newBook = createElement(el);
+    fragment.appendChild(newBook);
   })
+  const main = document.querySelector('main');
+  main.appendChild(fragment)
+}
+
+function buildPage(){
+  document.body.innerHTML = ''
+  createPage();
+  buildBooksList()
 }
 
 export { buildPage }

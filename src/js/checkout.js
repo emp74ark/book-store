@@ -65,6 +65,12 @@ function checkoutPage(){
       checkoutItem.appendChild(removeButton);
       checkoutList.appendChild(checkoutItem);
     }
+    
+    const checkoutTotalPrice = document.createElement('li');
+    checkoutTotalPrice.className = 'checkout__total-price';
+    checkoutTotalPrice.textContent = `Total price: ${Basket.getTotalPrice()} pesso`
+    checkoutList.appendChild(checkoutTotalPrice)
+
     checkoutWrapper.appendChild(checkoutList);
   }
   if (checkoutSize === 0){
@@ -77,12 +83,13 @@ function checkoutPage(){
   checkoutForm.method = 'post';
   checkoutForm.autocomplete = 'off';
 
-  checkoutForm.innerHTML = '<label for="name">Name</label> <input type="text" name="name" id="buyer-name" required pattern="[A-za-z]{4,}"> <label for="surname">Surname</label> <input type="text" name="surname" id="surname" required pattern="[A-Za-z]{5,}"> <label for="buyer-email">Email</label> <input type="email" name="email" id="email" required> <label for="date">Delivery date</label> <input type="datetime-local" name="date" id="date" required> <label for="street">Street</label> <input type="text" name="street" id="street" required pattern="[A-Za-z]{5,}( ?)([A-Za-z]{5,})?"> <label for="house">House number</label> <input type="number" name="house" id="house" required min="0"> <label for="flat">Flat number</label> <input type="text" name="flat" id="flat" required min="0" pattern="([0-9])/?([0-9])?"> <fieldset> <legend>Payment method:</legend> <label for="card">Card</label> <input type="radio" name="payment" id="card" value="card" required> <label for="cash">Cash</label> <input type="radio" name="payment" id="cash" value="cash" required> </fieldset> <label for="gift">Select gift:</label> <select name="gift" required> <option value="">--Please choose an option--</option> <option value="pack">pack as a gift</option> <option value="postcard">postcard</option> <option value="discount">2% discount to the next time</option> <option value="pen">branded pen</option> <option value="pencil">branded pencil</option> </select>'
+  checkoutForm.innerHTML = '<label for="name">Name</label> <input type="text" name="name" id="buyer-name" required pattern="[A-za-z]{4,}"> <label for="surname">Surname</label> <input type="text" name="surname" id="surname" required pattern="[A-Za-z]{5,}"> <label for="email">Email</label> <input type="email" name="email" id="email" required> <label for="date">Delivery date</label> <input type="date" name="date" id="date" required> <label for="street">Street</label> <input type="text" name="street" id="street" required pattern="[A-Za-z0-9 ]{5,}"> <label for="house">House number</label> <input type="number" name="house" id="house" required min="1"> <label for="flat">Flat number</label> <input type="text" name="flat" id="flat" required min="0" pattern="([1-9]{1,})/?-?([1-9]{1,})?"> <fieldset> <legend for="payment">Payment method:</legend> <input type="radio" name="payment" id="card" value="card" required checked> <label for="card">Card</label> <input type="radio" name="payment" id="cash" value="cash" required> <label for="cash">Cash</label> </fieldset><fieldset> <legend>Select gift:</legend> <ul> <li> <input type="checkbox" name="gift" value="pack">pack as a gift</input> </li> <li> <input type="checkbox" name="gift" value="postcard">postcard</input> </li> <li> <input type="checkbox" name="gift" value="discount">2% discount to the next time</input> </li> <li> <input type="checkbox" name="gift" value="pen">branded pen</input> </li> <li> <input type="checkbox" name="gift" value="pencil">branded pencil</input> </li> </ul> </fieldset>'
   
   const checkoutPay = document.createElement('input');
   checkoutPay.value = 'Confirm and pay';
   checkoutPay.type = 'submit';
   checkoutPay.className = 'checkout__wrapper-pay';
+  checkoutPay.disabled = 'true';
   
   function formHandler(formNode) {
     const data = new FormData(formNode)
@@ -90,13 +97,30 @@ function checkoutPage(){
   }
 
   function sendData (data) {
-    orders.push(Array.from(data.entries()))
+    orders.push([Array.from(data.entries()), ['price', Basket.getTotalPrice()]])
   }
 
   checkoutForm.addEventListener('input', (e) => {
     const formNode = e.target.form;
     const isValid = formNode.checkValidity();
     checkoutPay.disabled = !isValid;
+    const errMessage = document.createElement('span');
+    errMessage. className = 'error__input';
+    const currentLabel = formNode.querySelector(`label[for=${e.target.name}]`);
+    const currentLegend = formNode.querySelector(`legend[for=${e.target.name}]`);
+    try {
+      if (currentLegend === null){
+        if (!e.target.checkValidity() && currentLabel.childNodes.length === 1){
+          errMessage.textContent = `check your ${e.target.name}`;
+          currentLabel.appendChild(errMessage)
+        }
+        if (e.target.checkValidity() && currentLabel.childNodes.length > 1){
+          currentLabel.removeChild(currentLabel.childNodes[1])
+        }
+      }
+    } catch(err) {
+      // console.log(err)
+    }
   })
 
   checkoutPay.addEventListener('click', (e) => {
@@ -108,7 +132,7 @@ function checkoutPage(){
     }
     if (Basket.getTotalAmount() === 0){
       showError('You have not selected any book')
-      setTimeout(removeError, 3000)
+      setTimeout(removeError, 1500)
     }
   })
 
@@ -133,7 +157,7 @@ function buildCheckout(){
   const today = new Date()
   const tomorrow = new Date(today)
   tomorrow.setDate(tomorrow.getDate() + 1)
-  dateTime.min = tomorrow
+  dateTime.min = tomorrow.toISOString().split('T')[0]
 }
 
 export { buildCheckout, orders }
